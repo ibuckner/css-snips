@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <title>Explore FlexBox</title>
+    <style>
+      body, input         { font-family: Arial, Helvetica, sans-serif; }
+      button              { border: none; font-size: 1.1em; padding: 8px; user-select: none; }
+      button.hilight      { color: #fff; cursor: pointer; background-color: #444; }
+      button.hilight path { fill: #fff; }
+      fieldset            { border: 1px dotted #006; }
+      h1, h2              { color: #47035c; }
+      h1                  { margin: 4px 4px 4px 0; }
+      h2                  { margin: 3px 3px 3px 0; }
+      li                  { background-color: #8cacea; color: #fff; }
+      li.hilight          { background-color: #004488; color: #8cacea; }
+      li.item             { cursor: pointer; font-size: 2em; line-height: 100px; margin: 2px; 
+                            min-height: 100px; min-width: 100px; position: inherit; text-align: center; 
+                            transition: all 350ms ease-in-out; user-select: none; }
+      select              { margin-right: 5px; width: 18%; }
+      ul.container        { background-color:#fff; border: 1px dotted #006; list-style-position: outside; 
+                            list-style-type: none; margin: 5px; max-height: 50%; max-width: 99%; min-width: 25%;
+                            min-height: 25%; overflow: auto; padding: 3px; resize: both; transition: all 350ms ease-in-out; }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to do something useful here</noscript>
+    <h1>Fiddle around with flexbox settings</h1>
+    <section style="background-color:#eee; border-radius: 10px; padding: 5px;">
+      <div style="text-align:right">
+        <button id="btnAdd" class="hilight">+ Add</button>
+        <button id="btnClear">Clear</button>
+        <button id="btnRem">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+            <path d="M9 19c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5-17v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712zm-3 4v16h-14v-16h-2v18h18v-18h-2z"></path>
+          </svg> 
+          Remove selected</button>
+      </div>
+      <ul class="container" style="display:flex;">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </section>
+
+    <h2>Properties applied to parent container</h2>
+    <section>
+      <fieldset>
+        <legend title="flex-flow: flex-direction || flex-wrap">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow" target="_blank" rel="noopener noreferrer">flex-flow</a>
+        </legend>
+        <select id="flexDirection">
+          <option value="column">column</option>
+          <option value="column-reverse">column-reverse</option>
+          <option value="row" selected>row (default)</option>
+          <option value="row-reverse">row-reverse</option>      
+        </select>
+        <label title="flex-direction: row | row-reverse | column | column-reverse">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction" target="_blank" rel="noopener noreferrer">flex-direction</a> content flow across main axis
+        </label>
+        <br>
+        <select id="flexWrap">
+          <option value="nowrap">nowrap (default)</option>
+          <option value="wrap" selected>wrap</option>
+          <option value="wrap-reverse">wrap-reverse</option>
+        </select>
+        <label title="flex-wrap: nowrap | wrap | wrap-reverse">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap" target="_blank" rel="noopener noreferrer">flex-wrap</a> content wrap across multiple lines
+        </label>
+      </fieldset>
+      <br>
+      <fieldset>
+        <select id="justifyContent">
+          <option value="center" selected>center</option>
+          <option value="flex-end">flex-end</option>
+          <option value="flex-start">flex-start (default)</option>
+          <option value="space-around">space-around</option>
+          <option value="space-between">space-between</option>    
+          <option value="space-evenly">space-evenly</option>
+        </select>
+        <label title="justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content" target="_blank" rel="noopener noreferrer">justify-content</a> alignment along the main axis
+        </label>
+        <br>
+        <select id="alignItems">
+          <option value="baseline">baseline</option>
+          <option value="center" selected>center</option>
+          <option value="end">end</option>
+          <option value="first baseline">first baseline</option>
+          <option value="inherit">inherit</option>
+          <option value="initial">initial</option>
+          <option value="last baseline">last baseline</option>
+          <option value="flex-end">flex-end</option>
+          <option value="flex-start">flex-start</option>
+          <option value="normal">normal</option>
+          <option value="safe center">safe center</option>
+          <option value="self-start">self-start</option>
+          <option value="self-end">self-end</option>
+          <option value="start">start</option>
+          <option value="stretch">stretch (default)</option>
+          <option value="unsafe center">unsafe center</option>
+          <option value="unset">unset</option>
+        </select>
+        <label title="align-items: normal | stretch | center | start | end | flex-start | flex-end | self-start | self-end | baseline | first baseline | last baseline | safe center | unsafe center | inherit | initial | unset">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items" target="_blank" rel="noopener noreferrer">align-items</a> alignment of items within current line along the cross axis
+        </label>
+        <br>
+        <select id="alignContent">
+          <option value="baseline">baseline</option>
+          <option value="center" selected>center</option>
+          <option value="flex-end">flex-end</option>
+          <option value="flex-start">flex-start</option>
+          <option value="space-around">space-around</option>
+          <option value="space-between">space-between</option>
+          <option value="space-evenly">space-evenly</option>
+          <option value="stretch">stretch (default)</option>
+        </select>
+        <label title="align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-content" target="_blank" rel="noopener noreferrer">align-content</a> alignment of lines within the main axis (when space available)
+        </label>
+      </fieldset>
+    </section>
+
+    <h2>Properties applied to items within container</h2>
+    <section>
+      <fieldset class="pnlFlexItems" id="pnlFlexItems1" disabled>
+        <input id="order" type="number" value="" />
+        <label title="order: +integer">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank" rel="noopener noreferrer">order</a> ordinal positioning of item
+        </label>
+        <br>
+        <select id="alignSelf">
+          <option value="auto" selected>auto </option>
+          <option value="baseline">baseline</option>
+          <option value="center">center</option>
+          <option value="flex-start">flex-start</option>
+          <option value="flex-end">flex-end</option>
+          <option value="stretch">stretch</option>
+        </select>
+        <label title="align-self: auto | flex-start | flex-end | center | baseline | stretch">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self" target="_blank" rel="noopener noreferrer">align-self</a> 
+        </label>
+      </fieldset>
+      <fieldset class="pnlFlexItems" id="pnlFlexItems2" disabled>
+        <legend  title="flex: none | [ flex-grow flex-shrink? || flex-basis ]">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex" target="_blank" rel="noopener noreferrer">flex</a>
+        </legend>
+        <input id="flexGrow" type="number" value="" min="0" data-positive-int-only="1" />
+        <label title="flex-grow: integer">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow" target="_blank" rel="noopener noreferrer">flex-grow</a> value by which an item is permitted to grow in relation to its neighbours
+        </label>
+        <br>
+        <input id="flexShrink" type="number" value="" min="0" data-positive-int-only="1" />
+        <label title="flex-shrink: integer">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink" target="_blank" rel="noopener noreferrer">flex-shrink</a> value by which an item is permitted to reduce in size in relation to its neighbours
+        </label>
+        <br>
+        <input id="flexBasis" type="text" value="" />
+        <label title="flex-basis: size unit | auto | fill | max-content | min-content | fit-content | content">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis" target="_blank" rel="noopener noreferrer">flex-basis</a> the default size of an item before the remaining space is distributed
+        </label>
+      </fieldset>
+    </section>
+
+    <h2>Notes</h2>
+    <p>A container has a main axis (L-&gt;R) and a cross axis (T-&gt;B) when the flex-direction is set as row and reversed if column. 
+      Properties can be combined via shorthand CSS properties. These are indicated as groups below.</p>
+
+    <script type="text/javascript">
+      var hi = "hilight";
+      var ul = document.querySelector("ul.container");
+      var btnAdd = document.getElementById("btnAdd");
+      var btnRem = document.getElementById("btnRem");
+      var flexContainerIDs = "flexDirection|flexWrap|justifyContent|alignItems|alignContent";
+      var flexItemIDs = "order|alignSelf|flexGrow|flexShrink|flexBasis";
+      var selectedItems = new Map();
+
+      function listItemDisplay(el) {
+        if (el.classList.contains(hi)) {
+          el.classList.remove(hi);
+        } else {
+          el.classList.add(hi);
+        }
+      }
+
+      function btnRemDisplay() {
+        selectedItems.size > 0 ? btnRem.classList.add(hi) : btnRem.classList.remove(hi);
+      }
+
+      function btnClearDisplay() {
+        selectedItems.size > 0 ? btnClear.classList.add(hi) : btnClear.classList.remove(hi);
+      }
+
+      function pnlFlexItemDisplay() {
+        [].slice.call(document.querySelectorAll(".pnlFlexItems"))
+          .forEach(function(el) {
+            el.disabled = selectedItems.size > 0 ? false : true;
+            if (selectedItems.size > 1) {
+              [].slice.call(el.querySelectorAll("input"))
+                .forEach(function(element) {
+                  element.value = "";
+                });
+            } else if (selectedItems.size === 1) {
+              var key = document.querySelector("li.hilight").id
+              var style = window.getComputedStyle(selectedItems.get(key));
+              [].slice.call(el.querySelectorAll("input"))
+                .forEach(function(element) {
+                  element.value = style[element.id];
+                });
+            }
+          });
+      }
+
+      function listItemSelectAction(event) {
+        listItemDisplay(event.target);
+        if (selectedItems.has(event.target.id)) {
+          selectedItems.delete(event.target.id);
+        } else {
+          selectedItems.set(event.target.id, event.target);
+        }
+        btnRemDisplay();
+        btnClearDisplay();
+        pnlFlexItemDisplay();
+      }
+
+      function initListItems(first) {
+        first = first || true;
+        [].slice.call(ul.querySelectorAll("li"))
+          .forEach(function(li, i) {
+            li.innerText = i;
+            li.id = i;
+            if (first) {
+              li.classList.add("item")
+              li.addEventListener("click", listItemSelectAction);
+            }
+          });
+      }
+
+      function flexStyleChange(event) {
+        var el = event.target;
+        if (flexContainerIDs.indexOf(el.id) > -1 && el.type.indexOf("select") > -1) {
+          ul.style[el.id] = el.options[el.selectedIndex].value;
+        } else if (flexItemIDs.indexOf(el.id) > -1) {
+          selectedItems.forEach(function(element) {
+            if (el.type.indexOf("select") > -1) {
+              element.style[el.id] = el.options[el.selectedIndex].value;
+            } else {
+              element.style[el.id] = el.value;
+            }
+          });
+        }
+      }
+
+      // react to selection changes on flexbox configuration controls
+      document.addEventListener("change", flexStyleChange);
+      
+      // add items to flex container
+      btnAdd.addEventListener("click", function(event) {
+        var li = document.createElement("li");
+        ul.appendChild(li);
+        var i = ul.children.length - 1
+        li.innerText = i;
+        li.id = i;
+        li.classList.add("item")
+        li.addEventListener("click", listItemSelectAction);
+      });
+
+      // remove items from flex container
+      btnRem.addEventListener("click", function(event) {
+        var change = false;
+        [].slice.call(document.querySelectorAll("li.hilight"))
+          .forEach(function(li) {
+            li.parentElement.removeChild(li);
+            change = true;
+          });
+        if (change) {
+          btnClear.classList.remove("hilight");
+          btnRem.classList.remove("hilight");
+          selectedItems.clear();
+          pnlFlexItemDisplay();
+          initListItems(false);
+        }
+      });
+
+      btnClear.addEventListener("click", function(event) {
+        if (selectedItems.size > 0) {
+          selectedItems.forEach(function(el) {
+            if (el.classList.contains(hi)) {
+              el.classList.remove(hi);
+            }
+          });
+          selectedItems.clear();
+          btnClear.classList.remove("hilight");
+          btnRem.classList.remove("hilight");
+          pnlFlexItemDisplay();
+          initListItems(false);
+        }
+      });
+
+      [].slice.call(document.querySelectorAll("[data-positive-int-only]"))
+        .forEach(function(element) {
+          element.addEventListener("input", function(e) {
+            e.target.value = Math.abs(e.target.value);
+          });
+        });
+
+      initListItems();
+
+      // fire change handler for each initial setting
+      flexStyleChange({target: document.getElementById("flexDirection")});
+      flexStyleChange({target: document.getElementById("flexWrap")});
+      flexStyleChange({target: document.getElementById("justifyContent")});
+      flexStyleChange({target: document.getElementById("alignItems")});
+      flexStyleChange({target: document.getElementById("alignContent")});
+    </script>
+  </body>
+</html>
