@@ -1,0 +1,29 @@
+{
+  "name": "css-snips",
+  "version": "0.1.0",
+  "description": "A list of snippets I've found useful",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "http": "http-server ./docs -p 8000 -o",
+    "test": "npm run http"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibuckner/css-snips.git"
+  },
+  "keywords": [
+    "CSS"
+  ],
+  "author": "IBuckner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibuckner/css-snips/issues"
+  },
+  "homepage": "https://github.com/ibuckner/css-snips#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
