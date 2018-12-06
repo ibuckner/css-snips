@@ -7,27 +7,341 @@
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>A long list of CSS snippets</title>
     <style>
-      body { font-family: Arial, Helvetica, sans-serif; overflow-x: hidden }
-
-      .box { background: rgba(255,255,255,0.9); border: 1px solid #D5D5D5;
-             border-radius: 3px; box-shadow: 0 1px 5px rgba(0,0,0,0.4) }
-      .TOC { color: #333; height: 100%; padding: 10px; 
-             position: fixed; right: 0; top: 0; width: 20% }
+      body { box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; overflow-x: hidden }
+      input { left: -9999px; position: absolute }
+      input:checked ~ label { background-color: rgb(57, 57, 211) }
+      input:checked ~ label::before { background-color: #fff }
+      label:hover, input:focus + label { box-shadow: 0 0 20px rgba(0, 0, 0, .6) }
+      label {
+        background-color: #666; border: 3px solid #fff; border-radius: 100px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .2); color: #fff;
+        cursor: pointer; display: block; margin: 20px; padding: 15px 30px 15px 62px;
+        position: relative; transition: background-color .2s, box-shadow .2s;
+        user-select: none; white-space: nowrap
+      }
+      label::before {
+        border: 3px solid #fff; border-radius: 100px; content: "";
+        display: block; height: 20px; left: 10px; position: absolute; top: 10px; 
+        transition: background-color .2s; width: 20px;
+      }
+      .row-align { align-items: center; display: flex; justify-content: flex-start; }
+      .animate { animation-delay: 0s; animation-direction: normal; animation-duration: 0.5s;
+        animation-iteration-count: infinite; animation-timing-function: ease-out }
+      .ball {
+        background-color: orange; border: 2px solid orange; border-radius: 50%; 
+        display: block; height: 70px; opacity: 0.5; width: 70px
+      }
+      .TOC { 
+        background: rgba(255,255,255,0.9); border: 1px solid #fff;
+        border-radius: 3px; box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+        color: #333; height: 100%; padding: 10px; position: fixed; right: 0; top: 0; width: 20%
+      }
+      .TOC > div > a { display: block }
     </style>
   </head>
   <body>
-    <article>
-      <header>
-        <h1>CSS snippets</h1>  
-      </header>
-      <main>
-        <aside class="TOC box">
-          <h2>Contents</h2>
-          <p>
-            <a href="#">link</a>
-          </p>
-        </aside>
-      </main>
-    </article>   
+    <header id="header">
+      <h1>CSS snippets</h1>
+    </header>
+    <main>
+      <article>
+        <h2 id="SquareToRound">Animation</h2>
+        <h3>Square to round border</h3>
+        <section>
+          <style>
+            div.sample001 { transition: border-radius 0.7s }
+            input:checked ~ div.sample001 { border-radius: 0 }
+          </style>
+          <div class="row-align">          
+            <input id="btnSample001" type="checkbox"> 
+            <div class="ball sample001"></div>
+            <label for="btnSample001">Animate</label>
+          </div>
+        </section>
+        <h3 id="BounceX">Bounce on the X axis</h3>
+        <section>
+          <style>
+            @keyframes bounceX {
+              0% {transform: translateX(0px)} 
+              10% {transform: translateX(2px)} 
+              50% {transform: translateX(-7px)} 
+              90% {transform: translateX(4px)} 
+              100% {transform: translateX(0px)}
+            }
+            input:checked ~ div.sample002 { animation-name: bounceX }
+          </style>
+          <div class="row-align">
+            <input id="btnSample002" type="checkbox"> 
+            <div class="animate ball sample002"></div>
+            <label for="btnSample002">Animate</label>
+          </div>
+        </section>
+        <h3 id="BounceY">Bounce on the Y axis</h3>
+        <section>
+          <style>
+            @keyframes bounceY {
+              0% {transform: translateY(0px)} 
+              10% {transform: translateY(2px)} 
+              50% {transform: translateY(-7px)} 
+              90% {transform: translateY(4px)} 
+              100% {transform: translateY(0px)}
+            }
+            input:checked ~ div.sample003 { animation-name: bounceY }
+          </style>
+          <div class="row-align">
+            <input id="btnSample003" type="checkbox"> 
+            <div class="animate ball sample003"></div>
+            <label for="btnSample003">Animate</label>
+          </div>
+        </section>
+        <h3 id="Blink">Blink</h3>
+        <section>
+          <style>
+            @keyframes blink {
+              0% {transform: scaleX(1)} 
+              25% {transform: scaleX(0.95)} 
+              50% {transform: scaleX(0.97)} 
+              75% {transform: scaleX(0.93)} 
+              100% {transform: scaleX(1)}
+            }
+            input:checked ~ div.sample004 { animation-name: blink }
+          </style>
+          <div class="row-align">
+            <input id="btnSample004" type="checkbox"> 
+            <div class="animate ball sample004"></div>
+            <label for="btnSample004">Animate</label>
+          </div>
+        </section>
+        <h3 id="Fade">Fade</h3>
+        <section>
+          <style>
+            @keyframes fade {
+              0% {opacity:1} 
+              33% {opacity:.65} 
+              67% {opacity:.85} 
+              100% {opacity:1}
+            }
+            input:checked ~ div.sample005 { animation-name: fade }
+          </style>
+          <div class="row-align">
+            <input id="btnSample005" type="checkbox"> 
+            <div class="animate ball sample005"></div>
+            <label for="btnSample005">Animate</label>
+          </div>
+        </section>
+        <h3 id="Flicker">Flicker</h3>
+        <section>
+          <style>
+            @keyframes flicker {
+              0% {transform: skewX(0deg)} 
+              20% {transform: skewX(8deg)} 
+              40% {transform: skewX(-8deg)} 
+              60% {transform: skewX(4deg)} 
+              80% {transform: skewX(-4deg)} 
+              100% {transform: skewX(0deg)}
+            }
+            input:checked ~ div.sample006 { animation-name: flicker }
+          </style>
+          <div class="row-align">
+            <input id="btnSample006" type="checkbox"> 
+            <div class="animate ball sample006"></div>
+            <label for="btnSample006">Animate</label>
+          </div>
+        </section>
+        <h3 id="Groove">Groove</h3>
+        <section>
+          <style>
+            @keyframes groove {
+              0% {transform: skewY(0deg) rotate(0deg)} 
+              15% {transform: skewY(-10deg) rotateZ(8deg)} 
+              35% {transform: skewY(10deg) rotateZ(-8deg)} 
+              55% {transform: skewY(-6deg) rotateZ(-4deg)} 
+              85% {transform: skewY(6deg) rotateZ(4deg)} 
+              100% {transform: skewY(0deg) rotate(0deg)}
+            }
+            input:checked ~ div.sample007 { animation-name: groove }
+          </style>
+          <div class="row-align">
+            <input id="btnSample007" type="checkbox"> 
+            <div class="animate ball sample007"></div>
+            <label for="btnSample007">Animate</label>
+          </div>
+        </section>
+        <h3 id="Jelly">Jelly</h3>
+        <section>
+          <style>
+            @keyframes jelly {
+              0% {transform: scaleX(1)} 
+              20% {transform: scaleX(0.9)} 
+              50% {transform: scaleX(1.25)} 
+              85% {transform: scaleX(0.8)} 
+              100% {transform: scaleX(1)}
+            }
+            input:checked ~ div.sample008 { animation-name: jelly }
+          </style>
+          <div class="row-align">
+            <input id="btnSample008" type="checkbox"> 
+            <div class="animate ball sample008"></div>
+            <label for="btnSample008">Animate</label>
+          </div>
+        </section>
+        <h3 id="Jerk">Jerk</h3>
+        <section>
+          <style>
+            @keyframes jerk {
+              0% {transform: translateX(0px) rotateZ(0deg)} 
+              20% {transform: translateX(-5px) rotateZ(-15deg)} 
+              40% {transform: translateX(5px) rotateZ(15deg)} 
+              60% {transform: translateX(-3px) rotateZ(5deg)} 
+              80% {transform: translateX(3px) rotateZ(-5deg)} 
+              100% {transform: translateX(0px) rotateZ(0deg)}
+            }
+            input:checked ~ div.sample009 { animation-name: jerk }
+          </style>
+          <div class="row-align">
+            <input id="btnSample009" type="checkbox"> 
+            <div class="animate ball sample009"></div>
+            <label for="btnSample009">Animate</label>
+          </div>
+        </section>
+        <h3 id="Pop">Pop</h3>
+        <section>
+          <style>
+            @keyframes pop {
+              0% {transform: scaleX(1) scaleY(1)} 
+              20%, 45% {transform: scaleX(1.35) scaleY(0.1)} 
+              65% {transform: scaleX(0.8) scaleY(1.7)} 
+              80% {transform: scaleX(0.6) scaleY(0.85)} 
+              100% {transform: scaleX(1) scaleY(1)}
+            }
+            input:checked ~ div.sample010 { animation-name: pop }
+          </style>
+          <div class="row-align">
+            <input id="btnSample010" type="checkbox"> 
+            <div class="animate ball sample010"></div>
+            <label for="btnSample010">Animate</label>
+          </div>
+        </section>
+        <h3 id="ShakeX">Shake X</h3>
+        <section>
+          <style>
+            @keyframes shakeX {
+              0% {transform: translateX(0px)} 
+              15% {transform: translateX(-3px)} 
+              25% {transform: translateX(3px)} 
+              45% {transform: translateX(-2px)} 
+              65% {transform: translateX(3px)} 
+              85% {transform: translateX(-2px)} 
+              100% {transform: translateX(0px)}
+            }
+            input:checked ~ div.sample011 { animation-name: shakeX }
+          </style>
+          <div class="row-align">
+            <input id="btnSample011" type="checkbox"> 
+            <div class="animate ball sample011"></div>
+            <label for="btnSample011">Animate</label>
+          </div>
+        </section>
+        <h3 id="ShakeY">Shake Y</h3>
+        <section>
+          <style>
+            @keyframes shakeY {
+              0% {transform: translateY(0px)} 
+              15% {transform: translateY(-3px)} 
+              25% {transform: translateY(3px)} 
+              45% {transform: translateY(-2px)} 
+              65% {transform: translateY(3px)} 
+              85% {transform: translateY(-2px)} 
+              100% {transform: translateY(0px)}
+            }
+            input:checked ~ div.sample012 { animation-name: shakeY }
+          </style>
+          <div class="row-align">
+            <input id="btnSample012" type="checkbox"> 
+            <div class="animate ball sample012"></div>
+            <label for="btnSample012">Animate</label>
+          </div>
+        </section>
+        <h3 id="Squeeze">Squeeze</h3>
+        <section>
+          <style>
+            @keyframes squeeze {
+              0% {transform: scaleY(1)} 
+              15% {transform: scaleY(0.95)} 
+              30% {transform: scaleY(0.9)} 
+              55% {transform: scaleY(0.75)} 
+              70% {transform: scaleY(1.3)} 
+              85% {transform: scaleY(0.95)} 
+              100% {transform: scaleY(1)}
+            }
+            input:checked ~ div.sample013 { animation-name: squeeze }
+          </style>
+          <div class="row-align">
+            <input id="btnSample013" type="checkbox"> 
+            <div class="animate ball sample013"></div>
+            <label for="btnSample013">Animate</label>
+          </div>
+        </section>
+        <h3 id="Swing">Swing</h3>
+        <section>
+          <style>
+            @keyframes swing {
+              0% {transform: rotateX(0deg)} 
+              20% {transform: rotateX(15deg)} 
+              40% {transform: rotateX(-15deg)} 
+              60% {transform: rotateX(7deg)} 
+              80% {transform: rotateX(-7deg)} 
+              100% {transform: rotateX(0deg)}
+            }
+            input:checked ~ div.sample014 { animation-name: swing }
+          </style>
+          <div class="row-align">
+            <input id="btnSample014" type="checkbox"> 
+            <div class="animate ball sample014"></div>
+            <label for="btnSample014">Animate</label>
+          </div>
+        </section>
+        <h3 id="Tada">Tada</h3>
+        <section>
+          <style>
+            @keyframes tada {
+              0% {transform: scaleX(1)} 
+              20% {transform: scaleX(1.1) rotate(3deg)} 
+              40% {transform: scaleX(0.97)} 
+              60% {transform: scaleX(0.99) rotate(-3deg)} 
+              80% {transform: scaleX(1.05)} 
+              100% {transform: scaleX(1)}
+            }
+            input:checked ~ div.sample015 { animation-name: tada }
+          </style>
+          <div class="row-align">
+            <input id="btnSample015" type="checkbox"> 
+            <div class="animate ball sample015"></div>
+            <label for="btnSample015">Animate</label>
+          </div>
+        </section>
+      </article>
+    </main>
+    <aside class="TOC">
+      <h2>Contents</h2>
+      <div>
+        <h3>Animation</h3>
+        <a href="#SquareToRound">Square to round border</a>
+        <a href="#BounceX">Bounce on x axis</a>
+        <a href="#BounceY">Bounce on y axis</a>
+        <a href="#Blink">Blink</a>
+        <a href="#Fade">Fade</a>
+        <a href="#Flicker">Flicker</a>
+        <a href="#Groove">Groove</a>
+        <a href="#Jelly">Jelly</a>
+        <a href="#Jerk">Jerk</a>
+        <a href="#Pop">Pop</a>
+        <a href="#ShakeX">Shake on x axis</a>
+        <a href="#ShakeY">Shake on y axis</a>
+        <a href="#Squeeze">Squeeze</a>
+        <a href="#Swing">Swing</a>
+        <a href="#Tada">Tada</a>
+      </p>
+    </aside>
   </body>
 </html>
