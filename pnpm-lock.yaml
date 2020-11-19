@@ -2,7 +2,7 @@ dependencies:
   ecstatic: 4.1.4
 devDependencies:
   http-server: 0.12.3
-lockfileVersion: 5.1
+lockfileVersion: 5.2
 packages:
   /async/2.6.3:
     dependencies:
