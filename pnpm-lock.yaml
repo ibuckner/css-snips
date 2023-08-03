@@ -66,7 +66,7 @@ packages:
     dependencies:
       he: 1.2.0
       mime: 1.6.0
-      minimist: 1.2.5
+      minimist: 1.2.8
       url-join: 2.0.5
     dev: true
 
@@ -77,7 +77,7 @@ packages:
       charset: 1.0.1
       he: 1.2.0
       mime: 2.4.6
-      minimist: 1.2.5
+      minimist: 1.2.8
       on-finished: 2.3.0
       url-join: 4.0.1
     dev: false
@@ -148,7 +148,7 @@ packages:
       corser: 2.0.1
       ecstatic: 3.3.2
       http-proxy: 1.18.1
-      minimist: 1.2.5
+      minimist: 1.2.8
       opener: 1.5.2
       portfinder: 1.0.28
       secure-compare: 3.0.1
@@ -173,14 +173,14 @@ packages:
     hasBin: true
     dev: false
 
-  /minimist@1.2.5:
-    resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
+  /minimist@1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
   /mkdirp@0.5.5:
     resolution: {integrity: sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==}
     hasBin: true
     dependencies:
-      minimist: 1.2.5
+      minimist: 1.2.8
     dev: true
 
   /ms@2.1.2:
